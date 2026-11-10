@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Fonts */
+    @font-face {
+      font-family: 'Poppins';
+      src: url(FONT/Poppins/Poppins-Regular.ttf);
+    }
+
+    @font-face {
+      font-family: 'Canva Sans';
+      src: url();
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+            font-family: 'Poppins';
+            background-color: #fbeff4;
+            color: #000000;
+            text-align: left;
+            background-image: url('ABOUT US/ehe.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            cursor: url('ABOUT US/cat_paw.png'), auto;
+        }
+
+    header {
+      position: relative;
+      background-color: #ffecf3;
+    }
+
+    /* Pink line under header */
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #d0137b;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d0137b;
+    }
+
+        .logo img {
+            width: 170px;
+            height: 100px;
+        }
+    nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5px 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin-left: auto; /* Align to the right */
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000000;
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #d0137b;
+      color: white;
+    }
+
+    a {
+    cursor: url('ABOUT US/cat_paw.png'), pointer;
+    }
+
+    h1 {
+      color: #d0317b;
+      font-size: 36px;
+      margin: 40px 20px 20px;
+    }
+
+    h2 {
+      color: #d0317b;
+      font-size: 28px;
+      margin: 30px 20px 10px;
+    }
+
+    p {
+      margin: 0 20px 20px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .subsection-title {
+      font-weight: bold;
+      color: #000;
+      margin-top: 15px;
+      margin-bottom: 8px;
+    }
+
+    .grooming-buttons {
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      margin-bottom: 50px; /* Added margin-bottom to create space between circles and next section */
+      }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: left;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .container-bg {
+            display: flex;
+            justify-content: space-around;
+            align-items: left;
+            flex-wrap: wrap;
+            padding: 20px;
+            background-color: #fadce7;
+        }
+
+        .partition {
+            width: 45%;
+            align-items: left;
+        }
+
+        .partition-text {
+            width: 45%;
+            align-items: left;
+            background-color: #fadce7;
+            border-radius: 10px;
+        }
+
+        .adopt-partition {
+            width: 45%;
+            align-items: center;
+        }
+        .guides p{
+          font-size: 16px;
+          margin: 2px 5px 0 5px;
+        }
+
+        .guides-partition {
+            width: 45%;
+            align-items: center;
+        }
+
+        .guides {
+  width: 100%;
+  height: auto;
+  border: 1px solid #d0137b;
+  border-radius: 10px;
+  background: #fbeff4;
+  margin-bottom: 5px;
+  cursor: url('ABOUT US/cat_paw.png'), pointer;
+  padding: 10px;
+  box-sizing: border-box; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.guides h2 {
+  color: #000;
+  font-size: 16px;
+  margin: 0 auto;
+}
+
+.guides::after {
+  content: '❤️'; /* Plus sign as the default icon */
+  font-size: 20px;
+}
+
+.guides.active::after {
+  content: '💖'; /* Minus sign when expanded */
+}
+
+.content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  padding: 0 10px;
+}
+
+.content p {
+  margin-top: 10px;
+}
+
+    .grooming-btn {
+    display: flex; /* Make the <a> a flex container */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+    text-align: center; /* Center text within the <p> */
+    width: 180px; /* Or whatever width you have */
+    height: auto; /* Adjust height if needed */
+    background-color: transparent;
+    text-decoration: none;z
+    transition: transform 0.3s ease-in-out;
+}
+
+.grooming-btn:hover {
+    transform: scale(1.05);
+}
+
+.infographic-box {
+    width: 200px; 
+    height: 200px; 
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid #d0137b;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin-bottom: 5px;
+}
+
+.infographic-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.grooming-btn p {
+    margin-top: 0;
+}
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 20px 0 20px;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      border: 1px solid #d0137b;
+    }
+
+    th {
+      background-color: #d0317b;
+      color: white;
+      border: 1px solid #d0137b;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    
+    }
+            /* Fade-in and Slide-up Animation */
+            .scroll-animated {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .scroll-animated.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fade-in and Slide-up for List Items (Potential Stagger) */
+        .scroll-animated-list {
+            /* Optional styles for the container */
+        }
+
+        .scroll-animated-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .scroll-animated-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-animated-list.in-view .scroll-animated-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .scroll-animated-list.in-view .scroll-animated-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        /* Zoom-in Animation */
+        .scroll-zoom {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-zoom.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .mosaic {
+            display: grid;
+        }
+
+        .partition img{
+          width: 100%;
+            max-width: 400px;
+            height: 250px;
+            border: 5px solid #d0317b;
+            border-radius: 80px;
+            align-items: left;
+        }
+
+        .mosaic__item:first-of-type {
+            grid-column: 2/ span 2;
+            grid-row: 2/ span 2;
+        }
+
+        .mosaic__item:last-of-type {
+            grid-column: 1/ span 2;
+            grid-row: 1/ span 2;
+        }
+
+    footer {
+      margin-top: 30px;
+      background-color: #d0137b;
+      color: #ffffff;
+      padding: 5px 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="homepage.html">
+          <img src="HOME/OOP Logo.png" alt="FurEver Friends Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="homepage.html">HOME</a></li>
+        <li><a href="our-animals.html">OUR ANIMALS</a></li>
+        <li><a href="about-us.html">ABOUT US</a></li>
+        <li><a href="help.html">HELP</a></li>
+        <li><a href="contactus.html">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+    <section class="container scroll-animated">
+      <div class="partition-text">
+      <h1>ADOPTION ESSENTIALS</h1>
+      <p>
+        At Furever Friends, we believe that every pet deserves a loving, responsible, and forever home. 
+        Adopting a pet is a life-changing decision that comes with great joy, companionship, and responsibility. 
+        Whether you're bringing home a playful pup, a curious cat, a chirpy bird, or even a small furry companion like a rabbit or guinea pig, it’s important to be well-prepared for their arrival.
+        <br><br>
+        These guides will help you understand the essentials of pet adoption, from setting up a comfortable space to providing proper nutrition, training, and medical care. 
+        We’ll cover everything you need to know about bonding with your new pet, addressing common challenges, and ensuring their well-being as they settle into their forever home. 
+        With patience, love, and commitment, you’ll create a strong and lasting relationship with your new companion, making adoption a truly rewarding experience.
+      </p>
+      </div>
+      <div style="margin-top: 115px;" class="partition">
+        <div class="scroll-animated-item">
+          <div class="mosaic">
+              <div class="mosaic__item">
+                  <img src="ABOUT US/adoption1.jpg" alt="animals">
+              </div>
+              <div class="mosaic__item">
+                  <img src="ABOUT US/adoption2.jpg" alt="animals">
+              </div>
+          </div>
+      </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="hero container scroll-animated">
+      <div class="hero-content partition">
+        <p style="margin-bottom: 50px;" class="subsection-title">Choose your pet to view grooming infographics:</p>
+        <div class="grooming-buttons">
+          <a href="cat-grooming.html" class="grooming-btn">
+              <div class="infographic-box">
+                  <img src="GROOMING INFOGRAPHICS/cat-groom.jpg" alt="Cat Grooming Infographic">
+              </div>
+              <p><strong>Cat Grooming</strong></p>
+          </a>
+
+          <a href="dog-grooming.html" class="grooming-btn">
+              <div class="infographic-box">
+                  <img src="GROOMING INFOGRAPHICS/dog-groom.jpg" alt="Dog Grooming Infographic">
+              </div>
+              <p><strong>Dog Grooming</strong></p>
+          </a>
+      </div>
+      </div>
+      <div style="text-align: right;" class="partition-text">
+      <h2>GROOMING GUIDES</h2>
+      <p class="subsection-title">Why Does Grooming Matter?</p>
+      <p>
+        Regular grooming is essential for maintaining your pet’s overall health and well-being. It keeps their fur and skin clean, reduces excessive shedding, prevents matting, and minimizes the risk of infections. 
+        Grooming sessions also provide an opportunity to check for parasites, lumps, or any unusual changes. Beyond hygiene, grooming strengthens your bond with your pet, making them more comfortable with human touch.
+      </p>
+      </div>
+    </section>
+
+    <section class="container-bg scroll-animated">
+      <section class="scroll-animated-list">
+        <h2 style="margin: 50px 40% 0 50px;">TRAINING GUIDES</h2>
+      
+        <p style="margin: 25px 50px 0 50px;" class="subsection-title">Why Does Training Matter?</p>
+        <p style="margin: 0 50px 0 50px;">
+          Training is a key part of responsible pet ownership, helping pets develop good behavior, follow commands, and adapt to their environment. 
+          It improves communication between you and your pet, strengthens your bond, and prevents unwanted behaviors like excessive barking, jumping, or aggression. 
+          Training also provides mental stimulation, reducing boredom-related problems.
+        </p>
+      
+        <p style="text-align: center;" class="subsection-title">General Animal Training Guide</p>
+        <p>
+
+            <div class="container scroll-animated-item">
+              <div class="guides-partition">
+                <div class="guides">
+                  <h2>Understand Animal Behavior</h2>
+                </div>
+                <div class="content">
+                  <p><strong>Body Language:</strong> communicate primarily through body language. Learn to recognize signs of anxiety, happiness, aggression, and relaxation in your pet.<br> <strong>Consistency:</strong> Consistency is key in training. Use the same commands and routines every time to help your animal understand what is expected.</p>
+                </div>
+                <div class="guides">
+                  <h2>Training Dogs</h2>
+                </div>
+                <div class="content">
+                  <p><strong>Basic Commands:</strong> Start with simple commands like "sit," "stay," "come," and "heel." Use positive reinforcement (treats or praise) when your dog obeys.
+                    <br><strong>Leash Training:</strong> Train your dog to walk on a leash without pulling by rewarding them for walking calmly beside you.
+                    <br><strong>Crate Training:</strong> Introduce your dog to a crate as a safe space. This helps with house training and can also prevent anxiety when left alone.</p>
+                </div>
+                <div class="guides">
+                  <h2>Training Cats</h2>
+                </div>
+                <div class="content">
+                  <p><strong>Litter Box Training:</strong> Most cats will naturally use a litter box. Make sure it’s clean and in a quiet, accessible place.
+                    <br><strong>Scratching Posts:</strong> Provide scratching posts to prevent your cat from scratching furniture. Reward them when they use it.
+                    <br><strong>Clicker Training:</strong> Use a clicker to mark desired behaviors, followed by a reward. This can help teach tricks or behavior changes.</p>
+                </div>
+              </div>
+              <div class="guides-partition">
+                <div class="guides">
+                  <h2>Training Birds</h2>
+                </div>
+                <div class="content">
+                  <p><strong>Step Up Command:</strong> Teach your bird to step onto your hand using the "step up" command. Use treats as motivation.
+                    <br><strong>Socialization:</strong> Spend time interacting with your bird regularly to help it feel comfortable with people and other animals.
+                    <br><strong>Trick Training:</strong> Start with basic tricks, like teaching your bird to wave or turn around, using treats and a consistent cue.</p>
+                </div>
+                <div class="guides">
+                  <h2>Training Small Mammals (Rabbits, Guinea Pigs, Hamsters)</h2>
+                </div>
+                <div class="content">
+                  <p><strong>Handling:</strong> Gently handle your small mammals to get them used to being held. Never force them if they resist.
+                    <br><strong>Litter Training:</strong> Rabbits and guinea pigs can be litter trained. Place their litter box in a corner they naturally frequent.
+                    <br><strong>Exercise:</strong> Provide space and toys for enrichment. Use positive reinforcement when they explore their environment or interact with toys.</p>
+                </div>
+                <div class="guides">
+                  <h2>General Tips for All Animals</h2>
+                </div>
+                <div class="content">
+                  <p><strong>Inconsistency:</strong> Changing commands or routines frequently can confuse animals. Stick to a clear routine.
+                    <br><strong>Overtraining:</strong> Training sessions should be short and positive. Overtraining can cause stress and burnout for both you and your animal.
+                    <br><strong>Ignoring the Animal's Needs:</strong> Ensure that your animal’s basic needs (food, exercise, companionship, etc.) are met before focusing on training.</p>
+                </div>
+              </div>
+            </div>
+            <div style="align-items: center;" class="container">
+              <div style="width: 45%; margin: 0 auto;" class="guides">
+                <h2>Common Mistakes to Avoid</h2>
+              </div>
+              <div class="content">
+                <p style="width: 45%; margin: 0 auto;"><strong>Inconsistency:</strong> Changing commands or routines frequently can confuse animals. Stick to a clear routine.
+                  <br><strong>Overtraining:</strong> Training sessions should be short and positive. Overtraining can cause stress and burnout for both you and your animal.
+                  <br><strong>Ignoring the Animal's Needs:</strong> Ensure that your animal’s basic needs (food, exercise, companionship, etc.) are met before focusing on training.</p>
+              </div>
+            </div>
+          </p>
+        
+      </section>
+      
+
+    </section>
+
+    </section>
+
+    <section class="container-bg scroll-animated" style="margin-top: 100px;">
+      <div class="partition-text" style="width: 90%; background-color: #fadce7; padding: 40px; border-radius: 15px; margin-right: 5%;">  <h2>Animal Myths and Facts</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Myth</th>
+        <th>Fact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Dogs are colorblind and only see in black and white.</td>
+        <td>Dogs can see colors, but not as vividly as humans. They mainly see shades of blue and yellow.</td>
+      </tr>
+      <tr>
+        <td>Goldfish have a three-second memory.</td>
+        <td>Goldfish have a memory span of months and can remember their owners and specific tasks.</td>
+      </tr>
+      <tr>
+        <td>Cat’s purring always means they’re happy.</td>
+        <td>Cats purr for various reasons, including relaxation, communication, and even to self-soothe when they’re stressed or in pain.</td>
+      </tr>
+      <tr>
+        <td>Bats are blind.</td>
+        <td>Bats are not blind; they can see, but they rely on echolocation to navigate in the dark.</td>
+      </tr>
+      <tr>
+        <td>Rats are dirty animals and carry diseases.</td>
+        <td>Rats are generally clean animals, and they can be kept as pets with proper hygiene. They only spread diseases when they are in unsanitary conditions.</td>
+      </tr>
+      <tr>
+        <td>Chameleons change color to blend in with their surroundings.</td>
+        <td>Chameleons change color to communicate, express emotions, or regulate their body temperature, not just to blend in.</td>
+      </tr>
+      <tr>
+        <td>Owls can rotate their heads 360 degrees.</td>
+        <td>Owls can rotate their heads about 270 degrees, not 360 degrees.</td>
+      </tr>
+      <tr>
+        <td>All snakes are venomous.</td>
+        <td>Only about 600 of the over 3,000 species of snakes are venomous.</td>
+      </tr>
+      <tr>
+        <td>Koalas are bears.</td>
+        <td>Koalas are marsupials, not bears. They are more closely related to wombats and kangaroos.</td>
+      </tr>
+      <tr>
+        <td>Penguins live in the North Pole.</td>
+        <td>Penguins live in the Southern Hemisphere, mainly in Antarctica, but some species live in warmer climates.</td>
+      </tr>
+      <tr>
+        <td>Dogs sweat through their skin like humans.</td>
+        <td>Dogs sweat only through their paw pads. They regulate their temperature mainly by panting.</td>
+      </tr>
+      <tr>
+        <td>Birds can’t feel pain.</td>
+        <td>Birds have a nervous system similar to other vertebrates, meaning they can experience pain and stress.</td>
+      </tr>
+      <tr>
+        <td>Elephants are afraid of mice.</td>
+        <td>Elephants are not afraid of mice, but they may react to sudden movements due to their natural instincts.</td>
+      </tr>
+      <tr>
+        <td>Horses sleep standing up.</td>
+        <td>Horses can sleep standing up but need to lie down for REM sleep.</td>
+      </tr>
+      <tr>
+        <td>Wolves howl at the moon.</td>
+        <td>Wolves howl to communicate with their pack, not because of the moon.</td>
+      </tr>
+      <tr>
+        <td>Cats always land on their feet.</td>
+        <td>While cats have a good sense of balance, they can still get injured if they fall from a great height.</td>
+      </tr>
+      <tr>
+        <td>All snakes are dangerous to humans.</td>
+        <td>Most snake species are non-venomous and pose little to no threat to humans.</td>
+      </tr>
+      <tr>
+        <td>Ladybugs are always female.</td>
+        <td>Ladybugs can be either male or female, though the females are usually larger than the males.</td>
+      </tr>
+      <tr>
+        <td>Animals in the wild only eat when they are hungry.</td>
+        <td>Many animals in the wild eat whenever they can find food, as they never know when they will encounter another meal.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  <p>&copy; 2025 FurEver Friends. All Rights Reserved.</p>
+</footer>
+
+  <script>
+            document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll(
+                '.scroll-animated, .scroll-animated-item, .scroll-zoom');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        entry.target.setAttribute('data-in-view', 'true');
+                    } else if (entry.target.getAttribute('data-in-view') === 'true') {
+                        entry.target.classList.remove('in-view');
+                        entry.target.removeAttribute('data-in-view');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20% 0px'
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll(
+                '.scroll-animated, .scroll-animated-item, .scroll-zoom');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        entry.target.setAttribute('data-in-view', 'true');
+                    } else if (entry.target.getAttribute('data-in-view') === 'true') {
+                        entry.target.classList.remove('in-view');
+                        entry.target.removeAttribute('data-in-view');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20% 0px'
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        const buttons = document.querySelectorAll('.guides');
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    button.classList.toggle('active');
+    const content = button.nextElementSibling;
+    if (content) {
+      content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+    }
+  });
+});
+
+
+  </script>
+</body>
+</html>

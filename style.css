@@ -1,0 +1,92 @@
+@font-face {
+    font-family: 'Poppins-Black';
+    src: url(FONT/Poppins/Poppins-Black.ttf);
+}
+
+@font-face {
+    font-family: 'Canva Sans';
+    src: url();
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fbeff4;
+    color: #0d0a0a;
+    text-align: center;
+}
+
+header {
+    background-color: #fbeff4;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d0137b; /* Changed the logo color to #d0137b */
+    border-bottom: 2px solid #d0137b; /* Adding a line under the logo with the same color */
+    padding-bottom: 5px; /* Space between text and the line */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #d0317b;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #fbeff4;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.button {
+    background-color: #fbeff4;
+}
+
+.search-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.hide {
+    display: none;
+}

@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurEver Friends</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      /* Fonts */
+        @font-face {
+            font-family: 'Poppins';
+            src: url(FONT/Poppins/Poppins-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url(FONT/Montserrat/Montserrat-VariableFont_wght.ttf);
+        }
+
+      * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+      }
+
+      body {
+              font-family: 'Poppins';
+              background-color: #fbeff4;
+              color: #000000;
+              text-align: center;
+              background-image: url('ABOUT US/ehe.gif');
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-position: center center;
+              background-attachment: fixed;
+              height: 100vh;
+              margin: 0;
+              cursor: url('ABOUT US/cat_paw.png'), auto;
+          }
+
+      header {
+          position: relative;
+          background-color: #ffecf3;
+      }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5px 10px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d0137b;
+        }
+
+        .logo img {
+            width: 170px;
+            height: 100px;
+        }
+
+      nav ul {
+          list-style: none;
+          display: flex;
+          gap: 20px;
+          margin-left: auto;
+          /* Align to the right */
+      }
+
+      nav ul li {
+          display: inline;
+      }
+
+      nav ul li a {
+          text-decoration: none;
+          color: #000000;
+          font-weight: 500;
+          padding: 10px 15px;
+          border-radius: 5px;
+          transition: background-color 0.3s ease;
+      }
+
+      nav ul li a:hover {
+          background-color: #d0137b;
+          color: white;
+      }
+
+      a {
+          cursor: url('ABOUT US/cat_paw.png'), pointer;
+      }
+
+      .intro {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          padding: 20px;
+      }
+
+      header {
+          position: relative;
+      }
+
+      header::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 0.09cm;
+          background-color: #d0317b;
+      }
+
+      .intro-text {
+          width: 30%;
+          font-size: 18px;
+          text-align: justify;
+      }
+
+      .intro img {
+          width: 40%;
+          max-width: 500px;
+          height: auto;
+      }
+
+      .intro-logo {
+          text-align: left;
+          margin-bottom: 10px;
+      }
+
+      .intro-logo img {
+          width: max-content;
+          height: auto;
+      }
+
+      .intro-logo p {
+          font-size: 16px;
+          font-weight: bold;
+          margin-top: 0px;
+          text-align: left;
+      }
+
+      .hero-content h1 {
+          color: #000000;
+          font-size: 32px;
+      }
+
+      .hero-content p {
+          font-size: 18px;
+          margin: 10px auto 30px;
+          max-width: 600px;
+      }
+
+      .categories {
+          display: flex;
+          justify-content: center;
+          gap: 20px;
+          flex-wrap: wrap;
+          max-width: 900px;
+          margin: 0 auto;
+      }
+
+      .category {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          background: #fbeff4;
+          padding: 15px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          transition: transform 0.3s ease;
+          width: 250px;
+          text-align: center;
+          text-decoration: none;
+          color: #020101;
+      }
+
+      .category:hover {
+          transform: scale(1.05);
+          cursor: url('ABOUT US/cat_paw.png'), pointer;
+      }
+
+      .category img {
+          width: 100%;
+          height: 180px;
+          object-fit: cover;
+          border-radius: 10px;
+      }
+
+      .category span {
+          margin-top: 10px;
+          font-weight: bold;
+          font-size: 16px;
+      }
+
+      .container {
+          display: flex;
+          justify-content: space-around;
+          align-items: left;
+          text-align: left;
+          flex-wrap: wrap;
+          padding: 20px;
+      }
+
+      .pet-container {
+          width: 250px;
+          height: 350px;
+          border: 1px solid #d0317b;
+          border-radius: 5px;
+          align-items: left;
+          margin-bottom: 50px;
+          background-color: #fff7fa;
+          box-shadow: 5px 5px 10px 0 #d0137b;
+      }
+
+      .pet-container h2,
+      .pet-container p {
+          margin: 15px 0 0 10px;
+      }
+
+      .pet-container img {
+          display: block;
+          width: 100%;
+          height: 230px;
+          border-radius: 5px;
+      }
+
+      /* Fade-in and Slide-up Animation */
+      .scroll-animated {
+          opacity: 0;
+          transform: translateY(50px);
+          transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .scroll-animated.in-view {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      /* Fade-in and Slide-up for List Items (Potential Stagger) */
+      .scroll-animated-list {
+          /* Optional styles for the container */
+      }
+
+      .scroll-animated-item {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+      }
+
+      .scroll-animated-item.in-view {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      .scroll-animated-list.in-view .scroll-animated-item:nth-child(1) {
+          transition-delay: 0.2s;
+      }
+
+      .scroll-animated-list.in-view .scroll-animated-item:nth-child(2) {
+          transition-delay: 0.4s;
+      }
+
+      /* Zoom-in Animation */
+      .scroll-zoom {
+          opacity: 0;
+          transform: scale(0.8);
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .scroll-zoom.in-view {
+          opacity: 1;
+          transform: scale(1);
+      }
+
+      footer {
+          margin-top: 30px;
+          background-color: #d0317b;
+          color: hsl(0, 0%, 100%);
+          padding: 15px;
+          text-align: center;
+      }
+
+      /* New styles for blog layout */
+      .blog-post {
+          text-align: left;
+          margin: 20px auto;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          opacity: 1;
+          display: flex;
+          flex-direction: column;
+          width: 33.33%;
+          cursor: url('ABOUT US/cat_paw.png'), auto;
+          height: auto;
+      }
+
+    .blog-post:hover {
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    }
+
+      .blog-post.expanded {
+          opacity: 1;
+      }
+
+      .blog-post-title {
+          font-size: 28px;
+          color: #d0137b;
+          margin-bottom: 15px;
+          font-family: 'Poppins';
+      }
+
+      .blog-post-date {
+          font-size: 14px;
+          color: #555;
+          margin-bottom: 10px;
+      }
+
+      .blog-post-image {
+          width: 100%;
+          height: 400px;
+          object-fit: cover;
+          border-radius: 10px;
+          margin-bottom: 15px;
+      }
+
+      .blog-post-content {
+          font-size: 16px;
+          line-height: 1.6;
+          color: #333;
+          overflow: hidden;
+      }
+
+      .read-more-button {
+          margin-top: 20px;
+          cursor: url('ABOUT US/cat_paw.png'), auto;
+          align-self: center;
+          display: none;
+      }
+
+      /* Adjust container for side-by-side layout */
+      .blog-post-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-around; /* Center the items horizontally */
+          gap: 20px; /* Add some gap between the blog posts */
+          margin: 20px auto; /* Center the container and add margin */
+          max-width: 100%; /* Make it full width */
+          overflow-x: auto;
+          padding-bottom: 0px;
+      }
+
+      .blog-post {
+          width: 30%; /* Make each blog post take up about 45% of the width */
+          min-width: 300px; /* Ensure a minimum width for smaller screens */
+          margin-bottom: 20px; /* Add margin below each blog post */
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          flex: 0 0 auto;
+      }
+      .blog-post-content{
+        flex-grow: 1;
+      }
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border: 1px solid #d0317b;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  width: 80%;
+  max-width: 600px;
+  overflow-y: auto;
+  max-height: 80vh;
+  text-align: left;
+}
+
+.popup h2 {
+  font-size: 24px;
+  color: #d0137b;
+  margin-bottom: 10px;
+  font-family: 'Poppins-Black';
+}
+
+.popup p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.popup img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.popup .close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: url('ABOUT US/cat_paw.png'), auto;
+  color: #d0317b;
+}
+
+#overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="homepage.html">
+                    <img src="HOME/OOP Logo.png" alt="FurEver Friends Logo">
+                </a>
+            </div>
+            <ul>
+                <li><a href="homepage.html" class="homepage-btn">HOME</a></li>
+                <li><a href="our-animals.html" class="our-animals-btn">OUR ANIMALS</a></li>
+                <li><a href="about-us.html" class="about-us-btn">ABOUT US</a></li>
+                <li><a href="help.html" class="help-btn">HELP</a></li>
+                <li><a href="contactus.html" class="contact-btn">CONTACT US</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero scroll-animated">
+        <div class="hero-content">
+            <h1 style="margin-top: 50px">Planning to Adopt a Pet?</h1>
+            <p>
+                FurEver Friends offers a diverse selection of pets looking for their perfect home! Click on a pet category to explore and find your ideal companion.
+            </p>
+        </div>
+        <div class="categories scroll-animated">
+            <a href="dogs.html" class="category">
+                <img src="HOME/Meet our dogs.jpg" alt="Meet Our Dogs">
+                <span>Meet Our Dogs</span>
+            </a>
+            <a href="cats.html" class="category">
+                <img src="HOME/Meet our cats.jpg" alt="Meet Our Cats">
+                <span>Meet Our Cats</span>
+            </a>
+            <a href="other-animals.html" class="category">
+                <img src="HOME/Other animals.jpg" alt="Other Animals">
+                <span>Other Animals</span>
+            </a>
+        </div>
+    </section>
+<br>
+<br>
+<br>
+    <footer>
+        <p>&copy; 2025 FurEver Friends. All Rights Reserved.</p>
+    </footer>
+
+    <div id="overlay"></div>
+
+    <div id="popup" class="popup">
+        <span class="close-button" onclick="closePopup()">&times;</span>
+        <h2 id="popup-title"></h2>
+        <img id="popup-image" src="" alt="">
+        <p id="popup-content"></p>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+          const animatedElements = document.querySelectorAll(
+              '.scroll-animated, .scroll-animated-item, .scroll-zoom, .pet-of-the-week-container');
+
+          const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add('in-view');
+                      entry.target.setAttribute('data-in-view', 'true');
+                  } else if (entry.target.getAttribute('data-in-view') === 'true') {
+                      entry.target.classList.remove('in-view');
+                      entry.target.removeAttribute('data-in-view');
+                  }
+              });
+          }, {
+              threshold: 0.1,
+              rootMargin: '0px 0px -20% 0px'
+          });
+
+          animatedElements.forEach(element => {
+              observer.observe(element);
+          });
+      });
+
+      function showBlogPost(blogId) {
+          const blogPost = document.querySelector(`.blog-post[data-blog-id="${blogId}"]`);
+          const popup = document.getElementById('popup');
+          const overlay = document.getElementById('overlay');
+          const title = document.getElementById('popup-title');
+          const image = document.getElementById('popup-image');
+          const content = document.getElementById('popup-content');
+
+          if (blogPost) {
+              title.textContent = blogPost.querySelector('.blog-post-title').textContent;
+              image.src = blogPost.querySelector('.blog-post-image').src;
+              content.innerHTML = blogPost.querySelector('.blog-post-content').innerHTML;
+
+              popup.style.display = 'block';
+              overlay.style.display = 'block';
+          }
+      }
+
+      function closePopup() {
+          document.getElementById('popup').style.display = 'none';
+          document.getElementById('overlay').style.display = 'none';
+      }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FurEver Friends - Contact Us</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Fonts */
+        @font-face {
+            font-family: 'Poppins';
+            src: url(FONT/Poppins/Poppins-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url(FONT/Montserrat/Montserrat-VariableFont_wght.ttf);
+        }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+            font-family: 'Poppins';
+            background-color: #fbeff4;
+            color: #0d0a0a;
+            text-align: center;
+            background-image: url('ABOUT US/ehe.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            cursor: url('ABOUT US/cat_paw.png'), auto;
+        }
+
+    header {
+      position: relative;
+      background-color: #ffecf3;
+    }
+
+    /* Pink line under header */
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #d0137b;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d0137b;
+    }
+
+        .logo img {
+            width: 170px;
+            height: 100px;
+        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5px 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin-left: auto; /* Align to the right */
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000000;
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #d0137b;
+      color: white;
+    }
+
+    a {
+      cursor: url('ABOUT US/cat_paw.png'), pointer;
+    }
+
+    .contact-container {
+      width: 80%;
+      margin: 20px auto;
+      text-align: left;
+    }
+    .section-box {
+      background: #fbeff4;
+      padding: 30px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #d0317b;
+      margin-bottom: 10px;
+    }
+    .contact-info p {
+      margin: 6px 0;
+      font-size: 18px;
+    }
+    .incident-section p {
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+
+    .incident-section-link:hover {
+      text-decoration: underline;
+    }
+    .back-home:hover {
+      background-color: #fbeff4;
+    }
+    .quick-links-footer {
+      background-color: #fbeff4;
+      padding: 20px;
+      text-align: left;
+      font-family: Arial, sans-serif;
+      color: #0d0a0a;
+    }
+    .quick-links-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .quick-links-section {
+      flex: 1;
+      min-width: 200px;
+      margin: 10px;
+    }
+    .quick-links-section h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .quick-links-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .quick-links-section ul li {
+      margin-bottom: 8px;
+    }
+    .quick-links-section ul li a {
+      text-decoration: none;
+      color: #0d0a0a;
+      font-weight: bold;
+    }
+    .quick-links-section ul li a:hover {
+      text-decoration: underline;
+    }
+    .gforms-container{
+      background: #fbeff4;
+      width:58%;
+      text-align: center;
+      align-items: left;
+      border-radius: 10px;
+    }
+
+    .maps-container{
+      background: #fbeff4;
+      width: 58%;
+      text-align: center;
+      align-items: left;
+      border-radius: 10px;
+    }
+                    /* Fade-in and Slide-up Animation */
+                    .scroll-animated {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .scroll-animated.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fade-in and Slide-up for List Items (Potential Stagger) */
+        .scroll-animated-list {
+            /* Optional styles for the container */
+        }
+
+        .scroll-animated-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .scroll-animated-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-animated-list.in-view .scroll-animated-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .scroll-animated-list.in-view .scroll-animated-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        /* Zoom-in Animation */
+        .scroll-zoom {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-zoom.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        footer {
+          margin-top: 30px;
+          background-color: #d0137b;
+          color: #fff;
+          padding: 15px;
+          text-align: center;
+        }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="homepage.html">
+          <img src="HOME/OOP Logo.png" alt="FurEver Friends Logo">
+        </a>
+      </div>
+      <ul>
+        <li><a href="homepage.html">HOME</a></li>
+        <li><a href="our-animals.html">OUR ANIMALS</a></li>
+        <li><a href="about-us.html">ABOUT US</a></li>
+        <li><a href="help.html">HELP</a></li>
+        <li><a href="contactus.html">CONTACT US</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="section-box incident-section scroll-animated">
+    <h2>In Case of Animal Cruelty Incidents</h2>
+    <p>
+      The Philippines' <strong id="incidentSection" class="incident-section-link">Animal Welfare Act of 1998</strong> safeguards
+      animals from cruelty and abuse. If you witness any act of animal cruelty,
+      document it by taking photos or videos as evidence. Immediately report the
+      incident to the nearest police precinct and request assistance from an
+      officer to intervene at the scene.
+    </p>
+    <p>
+      We urge everyone to take an active role in protecting animal rights. If you
+      need guidance, feel free to reach out to us—we're here to help.
+    </p>
+  </div>
+
+  <div class="contact-container scroll-animated">
+    <section class="contact-content scroll-animated-item" style="padding:20px;">
+      <h2>Contact Info by Concern - FurEver Friends</h2>
+      <p>For specific concerns, please reach out to the corresponding email:</p>
+      <ul style="list-style:none;">
+        <li class="scroll-animated-item"><strong>Animal Welfare and Reports:</strong> fureverfriendsweb@gmail.com</li>
+        <li class="scroll-animated-item"><strong>Volunteer Registration:</strong> fureverfriendsweb@gmail.com</li>
+        <li class="scroll-animated-item"><strong>Donations and Support:</strong> fureverfriendsweb@gmail.com</li>
+        <li class="scroll-animated-item"><strong>Adoptions:</strong> fureverfriendsweb@gmail.com</li>
+      </ul>
+
+      <div class="contact-info scroll-animated-item" style="margin-top:20px; font-size:18px;">
+        <p><strong>📞 Phone:</strong> 8343-4353</p>
+        <p><strong>📱 Mobile:</strong> 09000000000</p>
+        <p><strong>📧 Email:</strong> fureverfriendsweb@gmail.com</p>
+        <p><strong>📝 GForms:</strong>
+        </p>
+      </div>
+        <div class="gforms-container scroll-animated-item">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf-JZz-gcgPkx0c1A8aJh2aNS1WltIjIZPwrN7kV2j5MbdiWg/viewform?embedded=true" width="640" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      </div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="quick-links-footer">
+    <div class="quick-links-logo" style="padding-left: 50px; margin-bottom: 10px;">
+      <a href="homepage.html">
+        <img src="HOME/OOP Logo.png" alt="FurEver Friends Logo" style="width: 150px; height: auto;">
+      </a>
+    </div>
+    <div class="quick-links-container">
+      <div class="quick-links-section">
+        <h3>Search</h3>
+        <ul>
+          <li><a href="dogs.html">Dogs</a></li>
+          <li><a href="cats.html">Cats</a></li>
+          <li><a href="other-animals.html">Other pets</a></li>
+        </ul>
+      </div>
+      <div class="quick-links-section">
+        <h3>Get Involved</h3>
+        <ul>
+          <li><a href="donate.html">Donate</a></li>
+        </ul>
+      </div>
+      <div class="quick-links-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="contactus.html">Contact Us</a></li>
+          <li><a href="help.html">Help</a></li>
+        </ul>
+      </div>
+
+    </div>
+    <footer>
+      <p>&copy; 2025 FurEver Friends. All Rights Reserved.</p>
+    </footer>
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll(
+                '.scroll-animated, .scroll-animated-item, .scroll-zoom');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        entry.target.setAttribute('data-in-view', 'true');
+                    } else if (entry.target.getAttribute('data-in-view') === 'true') {
+                        entry.target.classList.remove('in-view');
+                        entry.target.removeAttribute('data-in-view');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20% 0px'
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        document.getElementById('incidentSection').addEventListener('click', function() {
+          window.open('https://lawphil.net/statutes/repacts/ra1998/ra_8485_1998.html', '_blank');
+  });
+</script>
+</body>
+</html>

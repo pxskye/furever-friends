@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FurEver Friends</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Fonts */
+        @font-face {
+            font-family: 'Poppins';
+            src: url(FONT/Poppins/Poppins-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url(FONT/Montserrat/Montserrat-VariableFont_wght.ttf);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins';
+            background-color: #fbeff4;
+            color: #0d0a0a;
+            text-align: center;
+            background-image: url('ABOUT US/ehe.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            height: auto;
+            margin: 0;
+            cursor: url('ABOUT US/cat_paw.png'), auto;
+            padding-bottom: 30px;
+        }
+
+        a {
+            cursor: url('ABOUT US/cat_paw.png'), pointer;
+        }
+
+        header {
+            position: relative;
+            background-color: #ffecf3;
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 4px;
+            background-color: #d0137b;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5px 10px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d0137b;
+        }
+
+        .logo img {
+            width: 170px;
+            height: 100px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin-left: auto;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #000000;
+            font-weight: 500;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #d0137b;
+            color: white;
+        }
+
+        .intro {
+            padding: 20px;
+            text-align: center;
+            display: flex; /* Enable flexbox to center the container and button */
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+        }
+
+        .intro-text {
+            font-size: 18px;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 30px auto 0; /* Added top margin */
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #d0137b;
+            margin-bottom: 20px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .gcash-info {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffecf3;
+            border-radius: 8px;
+            border: 1px solid #d0137b;
+            text-align: center;
+        }
+
+        .gcash-info img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border: 2px dashed #d0137b;
+            border-radius: 5px;
+            margin: 10px auto;
+            display: block;
+        }
+
+        .gcash-details p {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .back-button {
+            background-color: #d0137b; /* Pink color */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: url('ABOUT US/cat_paw.png'), pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px; /* Add some space above the button */
+        }
+
+        .back-button:hover {
+            background-color: #b80e6b;
+        }
+
+        footer {
+            margin-top: 30px;
+            background-color: #d0137b;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="homepage.html">
+                    <img src="HOME/OOP Logo.png" alt="FurEver Friends Logo">
+                </a>
+            </div>
+            <ul>
+                <li><a href="homepage.html">HOME</a></li>
+                <li><a href="our-animals.html">OUR ANIMALS</a></li>
+                <li><a href="about-us.html">ABOUT US</a></li>
+                <li><a href="help.html">HELP</a></li>
+                <li><a href="contactus.html">CONTACT US</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="intro scroll-animated">
+        <div class="container">
+            <h1>Support FurEver Friends</h1>
+            <p>Your generous donation helps us provide shelter, food, medical care, and love to animals in need. Every contribution, no matter the size, makes a significant difference in their lives. Thank you for helping us find them their fur-ever homes!</p>
+
+            <div class="gcash-info">
+                <h2>Donate via GCash</h2>
+                <img src="HOME/gcashqr.jpg" alt="GCash QR Code">
+                <div class="gcash-details">
+                    <p>Scan the QR code above using your GCash app or send your donation to:</p>
+                    <p><strong>GCash Name:</strong> LA****N B. </p>
+                    <p><strong>GCash Number:</strong> 09983110000 </p>
+                    <p>Please indicate "Donation" in the notes or reference.</p>
+                </div>
+            </div>
+
+            <div class="gcash-info">
+                <h2>Donate via Bancnet </h2>
+                <img src="HOME/bancnetlogo.png">
+                <div class="gcash-details">
+                    <p><strong> Account Number:</strong> 6031 3160 2470 0000 000
+                </div>
+            </div>
+            <br>
+            Please contact us if the preferred method of donation is not available.
+            <br><br>
+            📧 Email: fureverfriendsweb@gmail.com
+            <br>
+        </div>
+        <a href="contactus.html" class="back-button">Go Back</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FurEver Friends. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll(
+                '.scroll-animated, .scroll-animated-item, .scroll-zoom');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        entry.target.setAttribute('data-in-view', 'true');
+                    } else if (entry.target.getAttribute('data-in-view') === 'true') {
+                        entry.target.classList.remove('in-view');
+                        entry.target.removeAttribute('data-in-view');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20% 0px'
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+
+        });
+
+        function toggleAnswer(element) {
+            element.classList.toggle('active');
+        }
+
+        const buttons = document.querySelectorAll('.guides');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                button.classList.toggle('active');
+                const content = button.nextElementSibling;
+                if (content) {
+                    content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + 'px';
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

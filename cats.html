@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt a Pet!</title>
+    <style>
+   /* Fonts */
+        @font-face {
+            font-family: 'Poppins';
+            src: url(FONT/Poppins/Poppins-Regular.ttf);
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url(FONT/Montserrat/Montserrat-VariableFont_wght.ttf);
+        }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+            font-family: 'Poppins';
+            background-color: #fbeff4;
+            color: #0d0a0a;
+            text-align: left;
+            background-image: url('ABOUT US/ehe.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            height: 100vh;
+            margin: 0;
+            cursor: url('ABOUT US/cat_paw.png'), auto;
+        }
+
+    header {
+      position: relative;
+      background-color: #ffecf3;
+    }
+
+            
+    a {
+        cursor: url('ABOUT US/cat_paw.png'), pointer;
+    }
+
+    /* Pink line under header */
+    header::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: #d0137b;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #d0137b;
+    }
+
+        .logo img {
+            width: 170px;
+            height: 100px;
+        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5px 10px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin-left: auto; /* Align to the right */
+    }
+
+    nav ul li {
+      display: inline;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #000000;
+      font-weight: 500;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background-color: #d0137b;
+      color: white;
+    }
+    
+        /* Search bar */
+        input[type="text"] {
+            width:80%;
+            box-sizing: border-box;
+            border: 2px solid #d0137b;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        input[type="text"]:focus {
+            border-color: #d0137b;
+            outline: none;
+        }
+    
+        /* Section title */
+        h2 {
+            text-align: center;
+            font-size: 28px;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        a {
+            cursor: url('ABOUT US/cat_paw.png'), auto;
+        }
+    
+        /* Cards */
+        .pet-card {
+            background: white;
+            border: 2px solid pink;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin: 20px;
+            width: 250px;
+            display: inline-block;
+            vertical-align: top;
+            transition: transform 0.3s;
+            cursor: url('ABOUT US/cat_paw.png'), auto;
+            position: relative;
+        }
+        .pet-card:hover {
+            transform: scale(1.05);
+        }
+        .pet-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        .pet-info {
+            padding: 15px;
+        }
+        .pet-info h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #333;
+        }
+        .pet-info p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #666;
+        }
+    
+        /* Available Tag */
+        .available-tag {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: gold;
+            color: black;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 12px;
+            border-radius: 5px;
+        }
+    
+        /* Button */
+        .pet-card button {
+            margin-top: 10px;
+            background-color: #d0137b;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: url('ABOUT US/cat_paw.png'), auto;
+            transition: background-color 0.3s;
+        }
+        .pet-card button:hover {
+            background-color: #a0105e;
+        }
+    
+        /* Hide class */
+        .hide {
+            display: none !important;
+        }
+
+        /* Modal Styles */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6); 
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 15px;
+    padding: 30px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close {
+    color: #d0137b;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: url('ABOUT US/cat_paw.png'), auto;
+}
+.close:hover {
+    color: #a0105e;
+}
+
+/* Additional highlight class for names */
+.bruno-highlight {
+    color: #d0137b;
+    font-weight: bold;
+}
+
+/* Call to action button inside modal */
+.call-to-action {
+    display: block;
+    background-color: #d0137b;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+.call-to-action:hover {
+    background-color: #a0105e;
+}
+
+.adopted-tag {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #d0137b;
+    color: white;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+        /* Fade-in and Slide-up Animation */
+        .scroll-animated {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+
+        .scroll-animated.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fade-in and Slide-up for List Items (Potential Stagger) */
+        .scroll-animated-list {
+            /* Optional styles for the container */
+        }
+
+        .scroll-animated-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .scroll-animated-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-animated-list.in-view .scroll-animated-item:nth-child(1) {
+            transition-delay: 0.2s;
+        }
+
+        .scroll-animated-list.in-view .scroll-animated-item:nth-child(2) {
+            transition-delay: 0.4s;
+        }
+
+        /* Zoom-in Animation */
+        .scroll-zoom {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-zoom.in-view {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+
+footer {
+      margin-top: 30px;
+      background-color: #d0137b;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .container {
+            display: flex;
+            margin: 0 auto;
+            margin-top: 50px;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+    </style>
+    
+    
+</head>
+<body>
+
+   <body>
+        <header>
+            <nav>
+                <div class="logo">
+                    <a href="homepage.html">
+                        <img src="HOME/OOP Logo.png" alt="FurEver Friends Logo"/>
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="homepage.html">HOME</a></li>
+                    <li><a href="our-animals.html">OUR ANIMALS</a></li>
+                    <li><a href="about-us.html">ABOUT US</a></li>
+                    <li><a href="help.html">HELP</a></li>
+                    <li><a href="contactus.html">CONTACT US</a></li>
+                </ul>
+            </nav>
+        </header>
+    <input class="container scroll-animated" type="text" data-search placeholder="Search by name, age, breed, gender">
+
+    <div class="scroll-animated-item">
+        <h2>Available Pets</h2>
+        <div data-available-container></div>
+    </div>
+
+    <div class="scroll-animated">
+        <h2>Adopted Pets</h2>
+        <div data-adopted-container></div>
+    </div>
+
+    <template data-available-template>
+        <div class="pet-card" data-pet-name="">
+            <span class="available-tag">Available!</span> <!-- yellow tag -->
+            <img data-image src="" alt="">
+            <div class="pet-info">
+                <h3 data-name></h3>
+                <p>Age: <span data-age></span></p>
+                <p>Gender: <span data-gender></span></p>
+                <p>Breed: <span data-breed></span></p>
+                <button onclick="showModal(this.parentNode.parentNode.dataset.petName)">View Details</button>
+            </div>
+        </div>
+    </template>
+    
+
+    <template data-adopted-template>
+        <div class="pet-card adopted" data-pet-name="">
+            <img data-image src="" alt="" style="width: 100px; height: 100px; object-fit: cover;">
+            <h3 data-name></h3>
+            <p>Age: <span data-age></span></p>
+            <p>Gender: <span data-gender></span></p>
+            <p>Breed: <span data-breed></span></p>
+            <span class="adopted-tag">Adopted</span>
+            <button onclick="showModal(this.parentNode.dataset.petName)" disabled>View Details</button>
+        </div>
+    </template>
+
+    <div id="modal" class="modal">
+        <div id="modal-content" class="modal-content">
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 FurEver Friends. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const animatedElements = document.querySelectorAll(
+                '.scroll-animated, .scroll-animated-item, .scroll-zoom');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                        entry.target.setAttribute('data-in-view', 'true');
+                    } else if (entry.target.getAttribute('data-in-view') === 'true') {
+                        entry.target.classList.remove('in-view');
+                        entry.target.removeAttribute('data-in-view');
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20% 0px'
+            });
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+        const availableContainer = document.querySelector("[data-available-container]");
+        const adoptedContainer = document.querySelector("[data-adopted-container]");
+        const availableTemplate = document.querySelector("[data-available-template]");
+        const adoptedTemplate = document.querySelector("[data-adopted-template]");
+        const searchInput = document.querySelector("[data-search]");
+        const modal = document.getElementById('modal');
+
+        let users = [];
+        const googleFormLink = "https://docs.google.com/forms/d/e/1FAIpQLSf-JZz-gcgPkx0c1A8aJh2aNS1WltIjIZPwrN7kV2j5MbdiWg/formResponse";
+
+        searchInput.addEventListener("input", (e) => {
+            const value = e.target.value.toLowerCase();
+            users.forEach(user => {
+                const isVisible =
+                    user.Age.toLowerCase().includes(value) ||
+                    user.Gender.toLowerCase().includes(value) ||
+                    user.Breed.toLowerCase().includes(value) ||
+                    user.Name.toLowerCase().includes(value);
+                user.element.classList.toggle("hide", !isVisible);
+            });
+        });
+
+        fetch("cats-info.json")
+            .then(res => res.json())
+            .then(data => {
+                users = data.map(user => {
+                    let card;
+                    let container;
+                    let template;
+
+                    template = availableTemplate;
+container = user.Adopted ? adoptedContainer : availableContainer;
+
+
+                    card = template.content.cloneNode(true).children[0];
+                    card.dataset.petName = user.Name; // Store the name as a data attribute
+
+                    const availableTag = card.querySelector(".available-tag");
+
+if (user.Adopted) {
+    availableTag.remove(); // remove "Available!" tag
+    const adoptedTag = document.createElement('span');
+    adoptedTag.classList.add('adopted-tag');
+    adoptedTag.textContent = "Adopted!";
+    card.appendChild(adoptedTag); // add "Adopted!" tag
+} else {
+    availableTag.textContent = "Available!";
+    availableTag.style.backgroundColor = "gold";
+}
+
+                    const age = card.querySelector("[data-age]");
+                    const gender = card.querySelector("[data-gender]");
+                    const breed = card.querySelector("[data-breed]");
+                    const name = card.querySelector("[data-name]");
+                    const image = card.querySelector("[data-image]");
+
+                    age.textContent = user.Age;
+                    gender.textContent = user.Gender;
+                    breed.textContent = user.Breed;
+                    name.textContent = user.Name;
+
+                    if (user.imageUrl) {
+                        image.src = user.imageUrl;
+                        image.alt = `${user.Breed} - ${user.Age} - <span class="math-inline">\{user\.Name\} \(</span>{user.Gender})`;
+                    } else {
+                        image.style.display = 'none';
+                    }
+
+                    container.append(card);
+                    return { Age: user.Age, Gender: user.Gender, Breed: user.Breed, Name: user.Name, Img: user.imageUrl, element: card };
+                });
+            });
+
+            function showModal(petName) {
+    const pet = users.find(user => user.Name === petName);
+    if (!pet) {
+        console.error(`Pet with name "${petName}" not found.`);
+        return;
+    }
+
+    let content = `<span class="close" onclick="closeModal()">&times;</span>`;
+
+            switch (pet.Name) {
+                case 'Midnight':
+                    content += `
+                         <h2>Meet Our Mysterious Muse, Midnight! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Elegant Explorer • Curious by Nature • Loves Cozy Nooks
+                         </p>
+                         <p><strong>Name:</strong> Midnight</p>
+                         <p><strong>Age:</strong> 4 years old (A graceful grown-up with a youthful heart!)</p>
+                         <p><strong>Gender:</strong> Female</p>
+                         <p><strong>Color:</strong> Sleek Jet Black – a true stunner with a glossy coat!</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon">🐾</span> Great with Enrichment (loves interactive play)<br>
+                              <span class="personality-icon">🧠</span> Inquisitive and Smart<br>
+                              <span class="personality-icon">🐈</span> Indoor Jungle Adventurer<br>
+                              <span class="personality-icon">💖</span> Affectionate (in her own charming way!)
+                         </div>
+                         <p><strong>Breed:</strong> Beautiful Domestic Short Hair</p>
+                         <p class="midnight-story">
+                              <strong>Midnight's Story:</strong><br>
+                              Hello, lovely humans! I’m Midnight, your future feline companion and a true queen of cozy corners and high perches. My coat may be dark as night, but my personality is full of spark and curiosity! I adore interactive playtime — wand toys, puzzle feeders, and exploring cat trees make my whiskers twitch with excitement. After a good play session, you’ll find me curled up in a sunbeam or a snug hideaway. I’m looking for a calm and loving home where I can be myself, explore to my heart's content, and bond with someone special.
+                         </p>
+                         <p class="midnight-needs">
+                              <strong>What Midnight Needs:</strong><br>
+                              - Interactive Playtime: I thrive when I’m engaged. Wand toys, feathers, and treat puzzles? Yes, please! I love a home that makes time for enriching play.<br>
+                              - Cozy Indoor Jungle: Give me cat trees, tunnels, and window perches, and I’ll give you hours of quiet entertainment. A safe indoor world fuels my curious spirit!<br>
+                              - Gentle Grooming: A weekly brush helps keep my sleek coat shiny and reduces shedding — and I secretly enjoy the attention.<br>
+                              - Patient Companionship: I appreciate calm energy and kind, patient humans who understand that trust and affection bloom over time. Once I bond with you, I’ll be your loyal shadow.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> No pre-existing conditions – I’m healthy and happy!<br>
+                              ✅ <strong>Special Care:</strong> Weekly brushing and plenty of enrichment keep me at my best.<br>
+                              ✅ <strong>Fully Protected:</strong> I’m vaccinated, microchipped, and desexed.<br>
+                              ✅ <strong>Litter-Trained:</strong> 100% house-trained and tidy with my habits.<br>
+                              ✅ <strong>Flea & Worm Free:</strong> Treated regularly to keep me healthy and comfortable.
+                         </p>
+        
+                    `;
+                    break;
+                    case 'Oreo':
+                    content += `
+                         <h2>Meet Our Dapper Gentleman, Oreo! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Social Butterfly • Cuddle Enthusiast • Sophisticated Charmer
+                         </p>
+                         <p><strong>Name:</strong> Oreo</p>
+                         <p><strong>Age:</strong> 2 years old (Mature, but still playful!)</p>
+                         <p><strong>Gender:</strong> Male</p>
+                         <p><strong>Color:</strong> Handsome Black and White Tuxedo</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Loves Affection<br>
+                              <span class="personality-icon"></span> Great with People<br>
+                              <span class="personality-icon"></span> Gorgeous Coat<br>
+                              <span class="personality-icon"></span> Intelligent and Observant
+                         </div>
+                         <p><strong>Breed:</strong> Tuxedo Domestic Medium Hair</p>
+                         <p class="oreo-story">
+                              <strong>Oreo’s Story:</strong><br>
+                              "Hello there, fabulous friends! I'm Oreo, a striking tuxedo boy with a heart as soft as my fluffy coat. I’m the perfect mix of playful energy and chill cuddle buddy. Whether it's lounging in a sunny window or curling up in your lap for a cozy nap, I'm your guy. I absolutely adore attention and thrive on affection — scheduled cuddle sessions are basically my love language! I can't wait to find a forever home where I can share my love and sophisticated charm."
+                         </p>
+                         <p class="oreo-needs">
+                              <strong>What Oreo Needs:</strong><br>
+                              - Daily Love and Attention: I crave human connection, so please pencil me in for daily snuggles and bonding time!<br>
+                              - Grooming Routine: A quick weekly wipe-down with a damp cloth keeps my beautiful black and white coat looking fresh and clean — a small effort for a big return in dazzling looks!<br>
+                              - Mental Stimulation: I'm smart and curious, so interactive play, puzzle toys, and lots of window-watching adventures will keep me entertained.<br>
+                              - Affectionate Family: I'm searching for a family who enjoys companionship as much as I do. I'll be your constant source of love, purrs, and happiness.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> Perfectly healthy with no pre-existing conditions!<br>
+                              ✅ <strong>Special Care:</strong> Just my cuddle appointments and keeping my tuxedo tidy!<br>
+                              ✅ <strong>Fully Protected:</strong> I'm vaccinated, microchipped, and desexed.<br>
+                              ✅ <strong>Litter-Trained:</strong> House-trained and neat with my habits!<br>
+                              ✅ <strong>Flea & Worm Free:</strong> Regularly treated to stay healthy and happy.
+                         </p>
+                
+                    `;
+                    break;
+                    case 'Laura':
+                    content += `
+                         <h2>Meet Our Elegant Beauty, Laura! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Graceful Lady • Sweet Companion • Stunning Calico Queen
+                         </p>
+                         <p><strong>Name:</strong> Laura</p>
+                         <p><strong>Age:</strong> 2 years old (In her prime and full of charm!)</p>
+                         <p><strong>Gender:</strong> Female</p>
+                         <p><strong>Color:</strong> Gorgeous Calico — a beautiful mix of orange, black, and white</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Affectionate<br>
+                              <span class="personality-icon"></span> Beautiful Coat<br>
+                              <span class="personality-icon"></span> Great House Companion<br>
+                              <span class="personality-icon"></span> Loves Lounging
+                         </div>
+                         <p><strong>Breed:</strong> Domestic Shorthair</p>
+                         <p class="laura-story">
+                              <strong>Laura’s Story:</strong><br>
+                              "Hello, lovely humans! My name is Laura, and I'm a sweet, sophisticated lady looking for a home where I can be adored — as I very much deserve! With my stunning calico coat and soft, soulful eyes, I’m sure to capture your heart at first glance. I enjoy the finer things in life: cozy spots for lounging, gentle affection, and peaceful companionship. I can’t wait to find a quiet and loving home where I can truly blossom and become your forever best friend."
+                         </p>
+                         <p class="laura-needs">
+                              <strong>What Laura Needs:</strong><br>
+                              - A Calm and Loving Environment: I thrive in a peaceful home where I can relax, enjoy affection, and feel safe.<br>
+                              - Gentle Affection: I'm a sweet girl who enjoys pets and cuddles at my own pace — respect my queenly ways and I’ll reward you with endless love!<br>
+                              - Cozy Spaces: A soft bed by the window, a sunbeam to stretch out in — these are the little luxuries that make me happiest.<br>
+                              - Patient and Devoted Family: I’d love a family that understands my gentle spirit and will give me the time and space to settle in and truly shine.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> Healthy and strong with no pre-existing conditions!<br>
+                              ✅ <strong>Special Care:</strong> None beyond regular love and care for my lovely coat and spirit!<br>
+                              ✅ <strong>Fully Protected:</strong> Vaccinated, microchipped, and spayed.<br>
+                              ✅ <strong>Litter-Trained:</strong> A tidy lady with excellent house manners!<br>
+                              ✅ <strong>Flea & Worm Free:</strong> Regularly treated to keep me feeling my best.
+                         </p>
+                         <div class="modal-actions">
+                              <a href="#" class="call-to-action" onclick="inquireAbout('Laura')"> 💖 Ready to Welcome Grace and Beauty Into Your Life? Meet Laura! </a>
+                         </div>
+                         <p class="meet-laura">
+
+                         </p>
+                    `;
+                    break;
+                    case 'Chichi':
+                    content += `
+                         <h2>Meet Our Sleek &amp; Social Star, Chichi! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Stylish Sweetheart • People-Lover • Playtime Pro
+                         </p>
+                         <p><strong>Name:</strong> Chichi</p>
+                         <p><strong>Age:</strong> 2 years old (Young, vibrant, and full of personality!)</p>
+                         <p><strong>Gender:</strong> Female</p>
+                         <p><strong>Color:</strong> Elegant Black and White</p>
+                         <p><strong>Breed:</strong> Oriental Shorthair</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Affectionate &amp; Social<br>
+                              <span class="personality-icon"></span> Loves Interactive Play<br>
+                              <span class="personality-icon"></span> Indoor Explorer<br>
+                              <span class="personality-icon"></span> Loves Cozy Spots
+                         </div>
+                         <p class="chichi-story">
+                              <strong>Chichi’s Story:</strong><br>
+                              "Hi, I’m Chichi — a sleek and stylish lady with big ears, big eyes, and an even bigger personality! I’m not one to hide in the shadows; I thrive on companionship and absolutely adore being part of the action. Whether it's chasing toys, perching on a cat tree, or following you from room to room with a chirp, I’m your loyal and loving sidekick. I do best in a home where I can stay warm, engaged, and loved — ideally with people who enjoy chatty, interactive cats like me!"
+                         </p>
+                         <p class="chichi-needs">
+                              <strong>What Chichi Needs:</strong><br>
+                              - Lots of Interaction: I’m a social butterfly who craves human attention. Playtime, conversation, and cuddles are all on my daily wishlist.<br>
+                              - Engaging Environment: I’d love a home with cat trees, scratching posts, and fun toys to keep me mentally and physically stimulated.<br>
+                              - Warmth &amp; Comfort: My short coat means I can get chilly easily — soft blankets, sunny spots, or a heated bed make me one happy kitty!<br>
+                              - An Involved Family: If you're looking for a cat who wants to be part of your daily life and routines, I’m your girl.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> Healthy with no known medical conditions<br>
+                              ✅ <strong>Special Care:</strong> Just give me warmth, attention, and playtime — I’ll thrive!<br>
+                              ✅ <strong>Fully Protected:</strong> Vaccinated, microchipped, and desexed<br>
+                              ✅ <strong>Litter-Trained:</strong> Perfect bathroom manners<br>
+                              ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and ready for cuddles
+                         </p>
+                         <div class="modal-actions">
+                              <a href="#" class="call-to-action" onclick="inquireAbout('Chichi')"> 💖 Looking for a Loyal &amp; Loving Companion? Chichi is Waiting! </a>
+                         </div>
+                         <p class="meet-chichi">
+
+                         </p>
+                    `;
+                    break;
+                    case 'Masie':
+                    content += `
+                         <h2>Meet Our Chatty Charmer, Masie! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Intelligent Beauty • Devoted Companion • Talkative &amp; Loving
+                         </p>
+                         <p><strong>Name:</strong> Masie</p>
+                         <p><strong>Age:</strong> 1 year old (Young, curious, and ready to bond!)</p>
+                         <p><strong>Gender:</strong> Female</p>
+                         <p><strong>Color:</strong> Cream with Striking Dark Points</p>
+                         <p><strong>Breed:</strong> Siamese Cat</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Vocal &amp; Expressive<br>
+                              <span class="personality-icon"></span> Deeply Affectionate<br>
+                              <span class="personality-icon"></span> Highly Intelligent<br>
+                              <span class="personality-icon"></span> Loves Warm, Cozy Spots
+                         </div>
+                         <p class="masie-story">
+                              <strong>Masie’s Story:</strong><br>
+                              "Hello there! I’m Masie — a graceful Siamese girl with a lot to say and even more love to give. I’m curious, clever, and totally devoted to my humans. I love being near you, talking to you (yep, I’m quite the conversationalist), and soaking up all the attention I can get. I’m looking for a family who’ll appreciate my affectionate nature and keep me mentally stimulated. Trust me, life with me will never be boring — just warm, loving, and a little bit chatty!"
+                         </p>
+                         <p class="masie-needs">
+                              <strong>What Masie Needs:</strong><br>
+                              - Constant Companionship: I bond deeply and can get lonely, so I need someone who’ll enjoy my company as much as I enjoy theirs.<br>
+                              - Mental Stimulation: Puzzle toys, feather wands, and regular playtime keep my sharp mind happily engaged.<br>
+                              - Warm, Cozy Spaces: I love basking in sunlight or curling up in soft blankets — a comfy nook is my happy place.<br>
+                              - Structure &amp; Routine: A consistent schedule helps me feel safe and secure in my home.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> No health concerns — I’m in great shape!<br>
+                              ✅ <strong>Special Care:</strong> I thrive on interaction, engagement, and a bit of structure<br>
+                              ✅ <strong>Fully Protected:</strong> Vaccinated, microchipped, and desexed<br>
+                              ✅ <strong>Litter-Trained:</strong> Spotless with my litter habits<br>
+                              ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and ready to move in!
+                         </p>
+                         <div class="modal-actions">
+                              <a href="#" class="call-to-action" onclick="inquireAbout('Masie')"> 💖 Want a Loving, Loyal Companion Who Talks Back? Masie’s the One! </a>
+                         </div>
+                         <p class="meet-masie">
+
+                         </p>
+                    `;
+                    break;
+                    case 'Blue':
+                    content += `
+                         <h2>Meet Our Spirited Adventurer, Blue! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Playful Spirit • Social Butterfly • Explorer Extraordinaire
+                         </p>
+                         <p><strong>Name:</strong> Blue</p>
+                         <p><strong>Age:</strong> 3 years old (Full of fun and feline wisdom!)</p>
+                         <p><strong>Gender:</strong> Male</p>
+                         <p><strong>Color:</strong> Striking White with Orange and Black</p>
+                         <p><strong>Breed:</strong> Japanese Bobtail</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Loves to Jump &amp; Explore<br>
+                              <span class="personality-icon"></span> Craves Companionship<br>
+                              <span class="personality-icon"></span> Interactive Play Fan<br>
+                              <span class="personality-icon"></span> Great with Other Pets
+                         </div>
+                         <p class="blue-story">
+                              <strong>Blue’s Story:</strong><br>
+                              "Hey there! I’m Blue — a bright, bouncy guy with a unique bobtail and a big personality to match. I love being active, exploring every corner of my kingdom, and most of all, being where the action is. Whether I’m leaping up a cat tree, chasing toys, or hanging out with my humans, I bring joy and curiosity to every moment. I’m not a fan of being left out or left alone, so if you’ve got another friendly pet or you’re home a lot — we’re going to be a perfect match!"
+                         </p>
+                         <p class="blue-needs">
+                              <strong>What Blue Needs:</strong><br>
+                              - A Stimulating Environment: I love to climb, jump, and investigate — cat trees, shelves, and tunnels are my kind of playground.<br>
+                              - Plenty of Social Time: I’m a friendly feline who thrives on attention and would love a home where I won’t be lonely.<br>
+                              - Interactive Play: Wand toys, treat puzzles, and games keep me active and engaged.<br>
+                              - A Loving, Fun-Loving Family: I’m best suited for a home that can match my energy and give me the companionship I crave — maybe even a fellow furry friend!
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> Happy and healthy with no known issues<br>
+                              ✅ <strong>Special Care:</strong> Just keep me active, engaged, and surrounded by love<br>
+                              ✅ <strong>Fully Protected:</strong> Vaccinated, microchipped, and desexed<br>
+                              ✅ <strong>Litter-Trained:</strong> Super neat and tidy<br>
+                              ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and feeling great
+                         </p>
+                         <div class="modal-actions">
+                              <a href="#" class="call-to-action" onclick="inquireAbout('Blue')"> 💖 Looking for a Fun, Loyal, and Energetic Companion? Come Meet Blue! </a>
+                         </div>
+                         <p class="meet-blue">
+
+                         </p>
+                    `;
+                    break;
+                    case 'Gavin':
+                    content += `
+                         <h2>Meet Our Gentle Buddy, Gavin! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Easygoing Friend • Sweetheart at Heart • Ready to Love
+                         </p>
+                         <p><strong>Name:</strong> Gavin</p>
+                         <p><strong>Age:</strong> 1.5 years old (Young, bright, and full of heart!)</p>
+                         <p><strong>Gender:</strong> Male</p>
+                         <p><strong>Color:</strong> White with Handsome Orange Patches</p>
+                         <p><strong>Breed:</strong> Domestic Shorthair</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Loving and Gentle<br>
+                              <span class="personality-icon"></span> Bright and Cheerful<br>
+                              <span class="personality-icon"></span> Perfect Family Companion<br>
+                              <span class="personality-icon"></span> Playful but Calm
+                         </div>
+                         <p class="gavin-story">
+                              <strong>Gavin’s Story:</strong><br>
+                              "Hi there! I'm Gavin — a mellow, affectionate boy who’s just looking for someone to love (and who’ll love me back, of course!). I’m still young enough to enjoy a good play session, but what I really excel at is being a calm, comforting companion. Whether you're reading, watching TV, or just enjoying a quiet afternoon, I’ll be right by your side, purring away and making every moment a little sweeter."
+                         </p>
+                         <p class="gavin-needs">
+                              <strong>What Gavin Needs:</strong><br>
+                              - A Loving Home: I'm all about cozy companionship — a family who enjoys quiet time and affection would be my dream come true.<br>
+                              - Play and Cuddle Balance: I like toys and playtime, but I also love to settle down for snuggles afterward.<br>
+                              - A Calm Environment: I do best in a peaceful, loving space where I can relax and be my best gentle self.<br>
+                              - Patient, Kind People: I bond deeply with my humans, so a family that appreciates a tender-hearted boy like me would be perfect.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> Healthy with no pre-existing conditions<br>
+                              ✅ <strong>Special Care:</strong> None needed — just your love and attention!<br>
+                              ✅ <strong>Fully Protected:</strong> Vaccinated, microchipped, and neutered<br>
+                              ✅ <strong>Litter-Trained:</strong> Tidy and reliable in my habits<br>
+                              ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and feeling great
+                         </p>
+                         <div class="modal-actions">
+                              <a href="#" class="call-to-action" onclick="inquireAbout('Gavin')"> 💖 Want a Sweet, Loyal Companion? Gavin Can’t Wait to Meet You! </a>
+                         </div>
+                         <p class="meet-gavin">
+
+                         </p>
+                    `;
+                    break;
+                    case 'Bread':
+                    content += `
+                         <h2>Meet Our Cozy Cuddlebug, Bread! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Gentle Soul • Seasoned Sweetheart • Loves Warmth &amp; Snuggles
+                         </p>
+                         <p><strong>Name:</strong> Bread</p>
+                         <p><strong>Age:</strong> 5 years old (A wise and loving companion!)</p>
+                         <p><strong>Gender:</strong> Male</p>
+                         <p><strong>Color:</strong> Warm Orange Stripes with a Soft White Belly</p>
+                         <p><strong>Breed:</strong> Puspin</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Loves Warm, Cozy Spots<br>
+                              <span class="personality-icon"></span> Affectionate and Calm<br>
+                              <span class="personality-icon"></span> Gentle, Sunny Disposition<br>
+                              <span class="personality-icon"></span> Perfect Lap Cat
+                         </div>
+                         <p class="bread-story">
+                              <strong>Bread’s Story:</strong><br>
+                              "Hello, wonderful humans! I’m Bread — a mellow, affectionate boy who’s all about comfort, warmth, and quiet companionship. My orange-striped coat and soft white belly are just made for cozy cuddles! I'm a mature, easygoing guy who loves lounging in sunny spots and napping in warm blankets. I do have a little quirk — I’m a bit sensitive to the cold, so keeping me warm and comfy makes me the happiest cat in the world. I’m ready to bring calm, steady love into your life."
+                         </p>
+                         <p class="bread-needs">
+                              <strong>What Bread Needs:</strong><br>
+                              - Warmth and Comfort: I do best in cozy environments, especially during cooler seasons. A warm bed, sunny window, or soft blanket makes me feel secure and loved.<br>
+                              - Gentle Companionship: I'm not high-energy — just a sweet, easygoing friend who’s happiest when he’s near his humans.<br>
+                              - Regular Health Monitoring: I sometimes catch a cold when it gets chilly; keeping me warm usually keeps me healthy, but if I seem under the weather, a vet visit is a good idea.<br>
+                              - A Calm, Loving Home: A peaceful household where I can truly relax would be a dream come true.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> Healthy overall with no pre-existing conditions<br>
+                              ✅ <strong>Special Care:</strong> Keep me warm in colder weather and watch for mild cold symptoms<br>
+                              ✅ <strong>Fully Protected:</strong> Vaccinated, microchipped, and neutered<br>
+                              ✅ <strong>Litter-Trained:</strong> Excellent house manners<br>
+                              ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and in great shape
+                         </p>
+                         <div class="modal-actions">
+                              <a href="#" class="call-to-action" onclick="inquireAbout('Bread')"> 💖 Ready for Cozy Evenings and Gentle Love? Bread is Waiting for You! </a>
+                         </div>
+                         <p class="meet-bread">
+
+                         </p>
+                    `;
+                    break;
+                    case 'Hollis':
+                    content += `
+                         <h2>Meet Our Tenderhearted Beauty, Hollis! ✨</h2>
+                         <p class="quick-facts">
+                              (Quick Facts at a Glance) <br>
+                              Gentle Soul • Sweet &amp; Sensitive • Full of Love
+                         </p>
+                         <p><strong>Name:</strong> Hollis</p>
+                         <p><strong>Age:</strong> 1 year old (Young and ready to blossom!)</p>
+                         <p><strong>Gender:</strong> Female</p>
+                         <p><strong>Color:</strong> Gorgeous Tricolor Coat</p>
+                         <p><strong>Breed:</strong> Domestic Medium Hair</p>
+                         <div class="personality-icons">
+                              <span class="personality-icon"></span> Loving and Affectionate<br>
+                              <span class="personality-icon"></span> Soft and Graceful<br>
+                              <span class="personality-icon"></span> Special Diet Care<br>
+                              <span class="personality-icon"></span> Ideal Family Companion
+                         </div>
+                         <p class="hollis-story">
+                              <strong>Hollis’s Story:</strong><br>
+                              "Hi, I'm Hollis — a soft, sweet girl with a tender heart and a beautiful tricolored coat! I'm still young and discovering the world, and I love having kind, gentle humans around me. I'm a calm, affectionate soul who’s looking for a loving home where I can feel safe, loved, and cared for. I do have a bit of a sensitive tummy, but with the right food and lots of fresh water, I'm a happy, healthy little companion."
+                         </p>
+                         <p class="hollis-needs">
+                              <strong>What Hollis Needs:</strong><br>
+                              - Gentle Care: I need easily digestible food to keep my sensitive stomach happy, and of course, always access to fresh water.<br>
+                              - A Calm, Loving Environment: I thrive in peaceful homes where love and patience are always in the air.<br>
+                              - Playful Moments: Though I'm a gentle soul, I still love soft toys and quiet playtime with my favorite people.<br>
+                              - Consistent Routine: A steady, predictable environment helps me feel secure and flourish.
+                         </p>
+                         <p class="good-to-know">
+                              <strong>Good to Know:</strong><br>
+                              ✅ <strong>Medical Condition:</strong> Only a sensitive stomach — easily managed with the right care<br>
+                              ✅ <strong>Special Care:</strong> Special diet and hydration are key to my well-being<br>
+                              ✅ <strong>Vaccinated:</strong> Fully vaccinated for my protection<br>
+                              ✅ <strong>Litter-Trained:</strong> Perfect with my litter box habits<br>
+                              ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and in tip-top shape
+                         </p>
+                    `;
+                    break;
+                    case 'Galaxy Annihilator Above The Constellation of “OO”rion  The Hunter De Jesus y Gutierrez':
+    content += `
+        <h2>Meet Our Out-of-This-World Wonder, Galaxy Annihilator Above The Constellation of “OO”rion The Hunter De Jesus y Gutierrez! 🚀✨</h2>
+        <p class="quick-facts">
+            (Quick Facts at a Glance) <br>
+            Cosmic Charmer • Playful Spirit • Universally Adorable
+        </p>
+        <p><strong>Name:</strong> Galaxy Annihilator Above The Constellation of “OO”rion The Hunter De Jesus y Gutierrez (but you can call me Galaxy!)</p>
+        <p><strong>Age:</strong> 1 year old (Young and full of star power!)</p>
+        <p><strong>Gender:</strong> Male</p>
+        <p><strong>Color:</strong> Tilapia (Shimmering and unique — just like a star!)</p>
+        <p><strong>Breed:</strong> Tilapia</p>
+        <div class="personality-icons">
+            <span class="personality-icon">⭐</span> Shines Bright in Any Home<br>
+            <span class="personality-icon">🚀</span> Playful and Adventurous<br>
+            <span class="personality-icon">🪐</span> One-of-a-Kind Personality<br>
+            <span class="personality-icon">🛡️</span> Vaccinated and Ready for Launch
+        </div>
+        <p class="galaxy-story">
+            <strong>Galaxy's Story:</strong><br>
+            "Greetings, Earthlings! I’m Galaxy — a shimmering, lively little adventurer who’s ready to rocket straight into your heart. 
+            With a name as big as the universe and a spirit to match, I’m all about good vibes, unique charm, and being the star of your home. 
+            I might look small, but trust me — my personality is galactically large! Whether I’m floating peacefully or zooming around like a comet, 
+            I’m here to make your world brighter."
+        </p>
+        <p class="galaxy-needs">
+            <strong>What Galaxy Needs:</strong><br>
+            - A Loving Home: Somewhere I can shine, shimmer, and maybe even show off a little.<br>
+            - Chill Atmosphere: I’m low maintenance and happy to vibe in a calm, friendly environment.<br>
+            - Good Care: I’m vaccinated and ready to go, just keep my world clean and happy!<br>
+            - Someone to Appreciate My Uniqueness: I mean, how many people can say they live with Galaxy Annihilator Above The Constellation of “OO”rion?
+        </p>
+        <p class="good-to-know">
+            <strong>Good to Know:</strong><br>
+            ✅ <strong>Medical Condition:</strong> Healthy and ready for intergalactic cuddles<br>
+            ✅ <strong>Vaccinated:</strong> Fully protected for adventures<br>
+            ✅ <strong>Litter-Trained:</strong> Yes (even the stars need a clean landing pad!)<br>
+            ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and feeling stellar
+        </p>
+    `;
+    break;
+    case 'Dianna Anne Genevieve \"Dayang\" Sevilla':
+    content += `
+        <h2>Meet Our Regal Beauty, Dianna Anne Genevieve "Dayang" Sevilla! 👑✨</h2>
+        <p class="quick-facts">
+            (Quick Facts at a Glance) <br>
+            Elegant Lady • Calm Companion • Full of Grace
+        </p>
+        <p><strong>Name:</strong> Dianna Anne Genevieve "DAYANG" Sevilla</p>
+        <p><strong>Age:</strong> 4 years old (A mature, graceful queen!)</p>
+        <p><strong>Gender:</strong> Female</p>
+        <p><strong>Color:</strong> Stunning White and Gray</p>
+        <p><strong>Breed:</strong> Persian-Siamese Mix</p>
+        <div class="personality-icons">
+            <span class="personality-icon">👑</span> Elegant and Refined<br>
+            <span class="personality-icon">❤️</span> Loving but Independent<br>
+            <span class="personality-icon">🛏️</span> Perfect Lap Companion<br>
+            <span class="personality-icon">🛡️</span> Vaccinated and Protected
+        </div>
+        <p class="dayang-story">
+            <strong>Dayang's Story:</strong><br>
+            "Hello, gentle souls. I am Dayang — a graceful, poised lady with the heart of royalty and the affection of a true companion. 
+            With my soft white-and-gray coat and gentle presence, I bring calm, comfort, and quiet beauty to every room I grace. 
+            I'm independent yet affectionate, enjoying cuddles on my terms and serene moments spent with my chosen people. 
+            If you’re looking for a serene, loyal companion who embodies quiet love and gentle strength, I may be your perfect match."
+        </p>
+        <p class="dayang-needs">
+            <strong>What Dayang Needs:</strong><br>
+            - A Peaceful Home: I thrive in a calm, loving environment where I can be appreciated for the elegant companion that I am.<br>
+            - Affectionate Moments: I enjoy cuddles and cozy spots, but also value my independence and personal space.<br>
+            - Regular Grooming: My beautiful coat deserves a little maintenance to keep it soft, smooth, and queenly.<br>
+            - Understanding Family: Someone who respects my gentle, regal nature and allows me to love in my own dignified way.
+        </p>
+        <p class="good-to-know">
+            <strong>Good to Know:</strong><br>
+            ✅ <strong>Medical Condition:</strong> Healthy and well-cared for<br>
+            ✅ <strong>Vaccinated:</strong> Anti-Rabies vaccinated for protection<br>
+            ✅ <strong>Litter-Trained:</strong> Clean and proper with her habits<br>
+            ✅ <strong>Flea &amp; Worm Free:</strong> Regularly treated and feeling wonderful
+        </p>
+    `;
+    break;
+
+
+    default:
+            content += `
+                <h2>${pet.Name}</h2>
+                <p><strong>Breed:</strong> ${pet.Breed}</p>
+                <p><strong>Age:</strong> ${pet.Age}</p>
+                <p><strong>Gender:</strong> ${pet.Gender}</p>
+                <p><strong>Description:</strong> ${pet.description || 'No description available.'}</p>
+                <p><strong>Medical Condition:</strong> ${pet.condition || 'None'}</p>
+                <p><strong>Special Care:</strong> ${pet.care || 'None'}</p>
+                <p><strong>Vaccinated:</strong> ${pet.vaccinated}</p>
+                <p><strong>Microchipped:</strong> ${pet.microchipped}</p>
+                <p><strong>Desexed:</strong> ${pet.desexed}</p>
+                <p><strong>House-Trained:</strong> ${pet.houseTrained}</p>
+            `;
+
+            // Check if the pet is adopted
+            if (pet.Adopted) {
+                content += `<p><strong>Status:</strong> This pet has already been adopted.</p>`;
+                // Remove the Google Form link for adopted pets
+                content += `<p>This pet is no longer available for adoption.</p>`;
+            } else {
+                // Only show the Google Form link if the pet is not adopted
+                content += `
+                    <div class="modal-actions">
+                        <a href="#" class="call-to-action" onclick="inquireAbout('${pet.Name}')"> 💖 Ready to Welcome ${pet.Name} into Your Home? </a>
+                    </div>
+                `;
+            }
+            break;
+    }
+
+    content += `<span class="close" onclick="closeModal()">&times;</span>`;
+    document.getElementById('modal-content').innerHTML = content;
+    modal.style.display = 'flex';
+}
+
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+function inquireAbout(petName) {
+    const inquiryUrl = `${googleFormLink}?entry.YOUR_ENTRY_ID=${encodeURIComponent(petName)}`;
+    window.open(inquiryUrl, '_blank');
+}
+
+</script>
+
+</body>
+</html>
